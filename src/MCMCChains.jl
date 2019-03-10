@@ -5,7 +5,7 @@ import StatsBase: autocor, autocov, countmap, counts, describe, predict,
        quantile, sample, sem, summarystats
 import LinearAlgebra: diag
 import Serialization: serialize, deserialize
-import Base: sort, range, names, get, hash
+import Base: sort, range, names
 import Statistics: cor
 
 using RecipesBase
@@ -17,8 +17,8 @@ using SpecialFunctions
 using AxisArrays
 const axes = Base.axes
 
-export Chains, getindex, setindex!, chains, setinfo, chainscat
-export describe, set_section, get_params, sections
+export Chains, getindex, setindex!, chains, setinfo
+export describe
 
 # export diagnostics functions
 export discretediag, gelmandiag, gewekediag, heideldiag, rafterydiag
@@ -37,7 +37,7 @@ Parameters:
 The `info` field can be set using `setinfo(c::Chains, n::NamedTuple)`.
 """
 struct Chains{A, T, K<:NamedTuple, L<:NamedTuple} <: AbstractChains
-    value::AxisArray{Union{Missing,A},3}
+    value::AxisArray{A,3}
     logevidence::T
     name_map::K
     info::L
