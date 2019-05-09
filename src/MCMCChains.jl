@@ -67,5 +67,6 @@ include("rafterydiag.jl")
 include("sampling.jl")
 include("stats.jl")
 include("plot.jl")
+include("interface/Interface.jl")
 
 end # module
